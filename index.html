@@ -142,8 +142,52 @@
                 question: "¿Qué genera Java, cuando ocurre una excepción?",
                 options: ["Objeto de tipo RuntimeException", "Objeto de tipo Exception", "Objeto de tipo Error", "Objeto de tipo Throwable"],
                 correctAnswer: "Objeto de tipo Exception"
+            },
+            {
+                question: "¿Qué es un Bloque try?",
+                options: ["Una lista de comandos", "Arroja un error", "Donde se intenta ejecutar y si algo sale mal, se maneja el error de una manera controlada", "Una lista de elementos"],
+                correctAnswer: "Donde se intenta ejecutar y si algo sale mal, se maneja el error de una manera controlada"
+            },
+            {
+                question: "¿Qué es un Bloque catch?",
+                options: ["Donde se intenta ejecutar y si algo sale mal, se maneja el error de una manera controlada", "Donde se ejecuta el programa", "Donde se define como manejar una excepción, si es que sucede", "Una lista de elementos"],
+                correctAnswer: "Donde se define como manejar una excepción, si es que sucede"
+            },
+            {
+                question: "Qué permite hacer el Bloque catch?",
+                options: ["Permite definir que sucedera depues", "Permite definir variables de error", "Permite salirse del programa", "Permite que el programa continue funcionando o maneje el error de una manera controlada"],
+                correctAnswer: "Permite que el programa continue funcionando o maneje el error de una manera controlada"
+            },
+            {
+                question: "En el bloque catch (TipoDeExcepcion e), ¿Qué es e?",
+                options: ["Una variable que representa la excepción capturada", "Un objeto de tipo Throwable", "Un objeto de tipo Integer", "Un objeto de tipo Error"],
+                correctAnswer: "Una variable que representa la excepción capturada"
+            },
+            {
+                question: "¿Qué es la clase File?",
+                options: ["Una clase que solo maneja archivos", "Una clase que no maneja archivos ni directorios", "Una clase que maneja archivos y directorios", "Una clase que solo maneja directorios"],
+                correctAnswer: "Una clase que maneja archivos y directorios"
+            },
+            {
+                question: "¿Qué se necesita importar para usar la clase File?",
+                options: ["import java.io.File, import java.io.IOException", "import java.io.FileNotFoundException, import java.io.Trowable", "import Java.io.IOException, import Java.io.File", "import java.io.FileWriter, import java.io.FileReader"],
+                correctAnswer: "import java.io.File, import java.io.IOException"
+            },
+            {
+                question: "¿Qué es un objeto de tipo File?",
+                options: ["Un objeto que maneja clases de archivos", "Un objeto que no maneja archivos ni directorios", "Un objeto que representa un archivo o un directorio", "Un objeto que solo maneja directorios"],
+                correctAnswer: "Un objeto que representa un archivo o un directorio"
+            },
+            {
+                question: "¿Cómo se puede crear un objeto de tipo File?",
+                options: ["new File(File)", "File(ruta)", "new File(ruta)", "File file = new File(ruta)"],
+                correctAnswer: "File file = new File(ruta)"
+            },
+            {
+                question: "Cómo podemos comprobar si un archivo existe?",
+                options: ["archivo.existe()", "archivo.create()", "archivo.exists()", "archivo.delete()"],
+                correctAnswer: "archivo.exists()"
             }
-
         ];
 
         let currentQuestion = 0;
