@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Administración de Archivos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .quiz-container {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #FF6347;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .option {
+            background-color: #3a3a3a;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .option:hover,
+        .option.selected {
+            background-color: #4a4a4a;
+        }
+
+        .option.correct {
+            background-color: #4CAF50;
+        }
+
+        .option.incorrect {
+            background-color: #f44336;
+        }
+
+        #next-btn,
+        #restart-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #next-btn:hover,
+        #restart-btn:hover {
+            background-color: #45a049;
+        }
+
+        #next-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #result {
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #feedback {
+            font-size: 18px;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="score" id="score">0/0</div>
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+        <div id="feedback"></div>
+        <button id="next-btn" disabled>Siguiente</button>
+        <div id="result" style="display: none;"></div>
+        <button id="restart-btn" style="display: none;">Reiniciar Quiz</button>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "¿Qué es una Excepción?",
+                options: ["Un problema que ocurre durante la ejecución de un programa", "Una lista de elementos", "Una lista de comandos", "Un arreglo de elementos"],
+                correctAnswer: "Un problema que ocurre durante la ejecución de un programa"
+            },
+            {
+                question: "¿Qué errores podria causar una excepción?",
+                options: [
+                    "Cuando se crean nuevos archivos y este es correctamente creado",
+                    "Simplificar el código, modificar direcciones de memoria, etc.",
+                    "Intentar acceder a un archivo que no existe, dividir por cero, o acceder a un índice fuera de los límites de un array",
+                    "Bloquear todos los permisos"
+                ],
+                correctAnswer: "Intentar acceder a un archivo que no existe, dividir por cero, o acceder a un índice fuera de los límites de un array"
+            },
+            {
+                question: "¿Qué genera Java, cuando ocurre una excepción?",
+                options: ["Objeto de tipo RuntimeException", "Objeto de tipo Exception", "Objeto de tipo Error", "Objeto de tipo Throwable"],
+                correctAnswer: "Objeto de tipo Exception"
+            }
+
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedAnswer = null;
+
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const nextBtn = document.getElementById('next-btn');
+        const scoreEl = document.getElementById('score');
+        const resultEl = document.getElementById('result');
+        const restartBtn = document.getElementById('restart-btn');
+        const feedbackEl = document.getElementById('feedback');
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionEl.textContent = question.question;
+            optionsEl.innerHTML = '';
+            feedbackEl.textContent = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('option');
+                button.addEventListener('click', () => selectOption(button, index));
+                optionsEl.appendChild(button);
+            });
+            nextBtn.disabled = true;
+            scoreEl.textContent = `${score}/${questions.length}`;
+        }
+
+        function selectOption(selectedButton, optionIndex) {
+            const buttons = optionsEl.getElementsByClassName('option');
+            for (let button of buttons) {
+                button.classList.remove('selected', 'correct', 'incorrect');
+                button.disabled = true;
+            }
+            selectedButton.classList.add('selected');
+            selectedAnswer = optionIndex;
+
+            const question = questions[currentQuestion];
+            const correct = question.options[optionIndex] === question.correctAnswer;
+
+            if (correct) {
+                selectedButton.classList.add('correct');
+                feedbackEl.textContent = '¡Respuesta correcta!';
+                feedbackEl.style.color = '#4CAF50';
+                score++;
+            } else {
+                selectedButton.classList.add('incorrect');
+                feedbackEl.textContent = 'Respuesta incorrecta. La respuesta correcta es: ' + question.correctAnswer;
+                feedbackEl.style.color = '#f44336';
+                for (let i = 0; i < buttons.length; i++) {
+                    if (question.options[i] === question.correctAnswer) {
+                        buttons[i].classList.add('correct');
+                    }
+                }
+            }
+
+            nextBtn.disabled = false;
+            scoreEl.textContent = `${score}/${questions.length}`;
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            questionEl.style.display = 'none';
+            optionsEl.style.display = 'none';
+            nextBtn.style.display = 'none';
+            feedbackEl.style.display = 'none';
+            resultEl.style.display = 'block';
+            restartBtn.style.display = 'block';
+
+            const percentage = (score / questions.length) * 100;
+            let message;
+            if (percentage >= 80) {
+                message = "¡Excelente! Tienes un gran conocimiento sobre administración de archivos.";
+            } else if (percentage >= 60) {
+                message = "Bien hecho, pero aún puedes mejorar. Repasa los temas en los que fallaste.";
+            } else {
+                message = "Necesitas estudiar más. No te desanimes, ¡sigue practicando!";
+            }
+
+            resultEl.innerHTML = `
+                <h2>Resultado Final</h2>
+                <p>Tu puntuación: ${score}/${questions.length}</p>
+                <p>${message}</p>
+            `;
+        }
+
+        nextBtn.addEventListener('click', nextQuestion);
+
+        restartBtn.addEventListener('click', () => {
+            currentQuestion = 0;
+            score = 0;
+            questionEl.style.display = 'block';
+            optionsEl.style.display = 'grid';
+            nextBtn.style.display = 'block';
+            feedbackEl.style.display = 'block';
+            resultEl.style.display = 'none';
+            restartBtn.style.display = 'none';
+            loadQuestion();
+        });
+
+        loadQuestion();
+    </script>
+</body>
+
+</html>
