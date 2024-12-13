@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz de Administración de Archivos</title>
+    <title>Quiz de Metodologia de la investigacion</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -128,7 +128,7 @@
     </style>
 </head>
 <body>
-    <button class="button" onclick="location.href='metodologia.html'">Metodologia</button>
+    <button class="button" onclick="location.href='index.html'">Archivos</button>
     <div class="quiz-container">
         <div class="score" id="score">0/0</div>
         <div class="question" id="question"></div>
@@ -142,93 +142,172 @@
     <script>
         const questions = [
             {
-                question: "¿Qué es una Excepción?",
-                options: ["Un problema que ocurre durante la ejecución de un programa", "Una lista de elementos", "Una lista de comandos", "Un arreglo de elementos"],
-                correctAnswer: "Un problema que ocurre durante la ejecución de un programa"
-            },
-            {
-                question: "¿Qué errores podria causar una excepción?",
+                question: "Elemento del planteamiento del problema que debe resumir lo que habrá de ser la investigación",
                 options: [
-                    "Cuando se crean nuevos archivos y este es correctamente creado",
-                    "Simplificar el código, modificar direcciones de memoria, etc.",
-                    "Intentar acceder a un archivo que no existe, dividir por cero, o acceder a un índice fuera de los límites de un array",
-                    "Bloquear todos los permisos"
+                    "Objetivos",
+                    "Justificación", 
+                    "Viabilidad", 
+                    "Preguntas"
                 ],
-                correctAnswer: "Intentar acceder a un archivo que no existe, dividir por cero, o acceder a un índice fuera de los límites de un array"
+                correctAnswer: "Preguntas"
             },
             {
-                question: "¿Qué genera Java, cuando ocurre una excepción?",
-                options: ["Objeto de tipo RuntimeException", "Objeto de tipo Exception", "Objeto de tipo Error", "Objeto de tipo Throwable"],
-                correctAnswer: "Objeto de tipo Exception"
+                question: "Tipo de muestra donde el principal objetivo en el diseño de ella es reducir al mínimo el error estándar",
+                options: [
+                    "Estadística",
+                    "Probabilística",
+                    "Determinística",
+                    "No probabilística"
+                ],
+                correctAnswer: "Probabilística"
             },
             {
-                question: "¿Qué es un Bloque try?",
-                options: ["Una lista de comandos", "Arroja un error", "Donde se intenta ejecutar y si algo sale mal, se maneja el error de una manera controlada", "Una lista de elementos"],
-                correctAnswer: "Donde se intenta ejecutar y si algo sale mal, se maneja el error de una manera controlada"
+                question: "Tipo de muestreo donde se reducen costos, tiempo y energía, al considerar que muchas veces las unidades de análisis se encuentran encapsuladas o encerradas en determinados lugares físicos o geográficos",
+                options: [
+                    "Estadístico estratificado",
+                    "Estadístico por racimos", 
+                    "Probabilístico estratificado", 
+                    "Probabilístico por racimos"
+                ],
+                correctAnswer: "Probabilístico por racimos"
             },
             {
-                question: "¿Qué es un Bloque catch?",
-                options: ["Donde se intenta ejecutar y si algo sale mal, se maneja el error de una manera controlada", "Donde se ejecuta el programa", "Donde se define como manejar una excepción, si es que sucede", "Una lista de elementos"],
-                correctAnswer: "Donde se define como manejar una excepción, si es que sucede"
+                question: "Tipos de muestras que son esenciales en los diseños de investigación transeccionales, tanto descriptivos como correlacionales-causales, donde se pretende hacer estimaciones de variables en la población",
+                options: [
+                    "No probabilística",
+                    "Estadística", 
+                    "Probabilística", 
+                    "No estadística"
+                ],
+                correctAnswer: "Probabilística"
             },
             {
-                question: "Qué permite hacer el Bloque catch?",
-                options: ["Permite definir que sucedera depues", "Permite definir variables de error", "Permite salirse del programa", "Permite que el programa continue funcionando o maneje el error de una manera controlada"],
-                correctAnswer: "Permite que el programa continue funcionando o maneje el error de una manera controlada"
+                question: "Se refiere al grado en que un instrumento de recolección de datos produce resultados consistentes y coherentes",
+                options: [
+                    "Viabilidad", 
+                    "Validez", 
+                    "Confiabilidad", 
+                    "Objetividad"
+                ],
+                correctAnswer: "Confiabilidad"
             },
             {
-                question: "En el bloque catch (TipoDeExcepcion e), ¿Qué es e?",
-                options: ["Una variable que representa la excepción capturada", "Un objeto de tipo Throwable", "Un objeto de tipo Integer", "Un objeto de tipo Error"],
-                correctAnswer: "Una variable que representa la excepción capturada"
+                question: "Tipo de enfoque de investigación científica donde se encuentran características como la de probar hipótesis y extraer significados de los datos",
+                options: [
+                    "Cuantitativo", 
+                    "Mixto", 
+                    "Cualitativo", 
+                    "Científico"
+                ],
+                correctAnswer: "Cuantitativo"
             },
             {
-                question: "¿Qué es la clase File?",
-                options: ["Una clase que solo maneja archivos", "Una clase que no maneja archivos ni directorios", "Una clase que maneja archivos y directorios", "Una clase que solo maneja directorios"],
-                correctAnswer: "Una clase que maneja archivos y directorios"
+                question: "En este nivel hay dos o más categorías del ítem o la variable. Las categorías no tienen orden ni jerarquía",
+                options: [
+                    "De medición por intervalos", 
+                    "De medición nominal", 
+                    "De medición ordinal", 
+                    "De medición de razón"
+                ],
+                correctAnswer: "De medición nominal"
             },
             {
-                question: "¿Qué se necesita importar para usar la clase File?",
-                options: ["import java.io.File, import java.io.IOException", "import java.io.FileNotFoundException, import java.io.Trowable", "import Java.io.IOException, import Java.io.File", "import java.io.FileWriter, import java.io.FileReader"],
-                correctAnswer: "import java.io.File, import java.io.IOException"
+                question: "Se refiere al grado en que un instrumento de recolección de datos mide la variable que pretende medir",
+                options: [
+                    "Validez", 
+                    "Confiabilidad", 
+                    "Objetividad", 
+                    "Viabilidad" 
+                ],
+                correctAnswer: "Validez"
             },
             {
-                question: "¿Qué es un objeto de tipo File?",
-                options: ["Un objeto que maneja clases de archivos", "Un objeto que no maneja archivos ni directorios", "Un objeto que representa un archivo o un directorio", "Un objeto que solo maneja directorios"],
+                question: "Tipo de enfoque de investigación científica que se conduce básicamente en ambientes naturales",
+                options: [
+                    "Cuantitativo", 
+                    "Mixto", 
+                    "Cualitativo", 
+                    "Científico"
+                ],
+                correctAnswer: "Cualitativo"
+            },
+            {
+                question: "Tipo de enfoque de investigación científica donde se realiza análisis de causa-efecto",
+                options: [
+                    "Un objeto que maneja clases de archivos", 
+                    "Un objeto que no maneja archivos ni directorios", 
+                    "Un objeto que representa un archivo o un directorio", 
+                    "Un objeto que solo maneja directorios"],
                 correctAnswer: "Un objeto que representa un archivo o un directorio"
             },
             {
                 question: "¿Cómo se puede crear un objeto de tipo File?",
-                options: ["new File(File)", "File(ruta)", "new File(ruta)", "File file = new File(ruta)"],
+                options: [
+                    "new File(File)", 
+                    "File(ruta)", 
+                    "new File(ruta)", 
+                    "File file = new File(ruta)"
+                ],
                 correctAnswer: "File file = new File(ruta)"
             },
             {
                 question: "Cómo podemos comprobar si un archivo existe?",
-                options: ["archivo.existe()", "archivo.create()", "archivo.exists()", "archivo.delete()"],
+                options: [
+                    "archivo.existe()", 
+                    "archivo.create()", 
+                    "archivo.exists()", 
+                    "archivo.delete()"
+                ],
                 correctAnswer: "archivo.exists()"
             },
             {
                 question: "Para qué se utiliza el metodo getName()?",
-                options: ["Para obtener el id de un directoro", "Para obtener el nombre de un archivo", "Para obtener la posición de un documento", "Para obtener directorios"],
+                options: [
+                    "Para obtener el id de un directoro", 
+                    "Para obtener el nombre de un archivo", 
+                    "Para obtener la posición de un documento", 
+                    "Para obtener directorios"
+                ],
                 correctAnswer: "Para obtener el nombre de un archivo"
             },
             {
                 question: "Qué es el metofdo createNewFile()?",
-                options: ["Crea nuevos directorios", "Intenta crear un nuevo archivo", "No intenta crear un nuevo archivo", "Crea una nueva subcarpeta"],
+                options: [
+                    "Crea nuevos directorios", 
+                    "Intenta crear un nuevo archivo", 
+                    "No intenta crear un nuevo archivo", 
+                    "Crea una nueva subcarpeta"
+                ],
                 correctAnswer: "Intenta crear un nuevo archivo"
             },
             {
                 question: "Son los metodos que se utilizan para verificar los permisos de lectura y escritura",
-                options: ["canUntil()", "canOpen", "CanRead(), CanWrite", "CanRead(), CanWrite()"],
+                options: [
+                    "canUntil()", 
+                    "canOpen", 
+                    "CanRead(), CanWrite", 
+                    "CanRead(), CanWrite()"
+                ],
                 correctAnswer: "canRead(), canWrite()"
             },
             {
                 question: "¿Cuál es ele metodo que se utiliza para renombar un archivo?",
-                options: ["listenTo()", "renameTo()", "changeName()", "rename()"],
+                options: [
+                    "listenTo()", 
+                    "renameTo()", 
+                    "changeName()", 
+                    "rename()"
+                ],
                 correctAnswer: "renameTo()"
             },  
             {
                 question: "¿Cuál es el metodo que se utiliza para borrar un archivo?",
-                options: ["remove()", "delete()", "removeTo()", "deleteTo()"],
+                options: [
+                    "remove()", 
+                    "delete()", 
+                    "removeTo()", 
+                    "deleteTo()"
+                ],
                 correctAnswer: "delete()"
             },
             {
